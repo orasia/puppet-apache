@@ -11,7 +11,8 @@ String $config_ensure,
 String $config_path,
 String $service_name,
 Enum["running", "stopped"] $service_ensure,
-Boolean $service_enable,
+#Boolean $service_enable,
+String $service_enable,
 ) {
   #include apache::install
   contain apache::install
@@ -20,5 +21,5 @@ Boolean $service_enable,
 
   Class['::apache::install']
   -> Class['::apache::config']
-  ~> Class['::appache::service']
+  ~> Class['::apache::service']
 }
